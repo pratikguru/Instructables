@@ -59,7 +59,11 @@ def connect():
 
     try:
         if version_ == 2:
-            serial_object = serial.Serial('/dev/tty' + str(port), baud)
+            try:
+                serial_object = serial.Serial('/dev/tty' + str(port), baud)
+            
+            except:
+                print "Cant Open Specified Port"
         elif version_ == 1:
             serial_object = serial.Serial('COM' + str(port), baud)
 
